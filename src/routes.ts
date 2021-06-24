@@ -10,11 +10,11 @@ const userController = new UserController()
 const tagController = new TagController()
 const complimentsController = new ComplimentsController()
 
-routes.get('/user', userController.index)
-routes.get('/tag', tagController.index)
+routes.get('/users', userController.index)
+routes.get('/tags', tagController.index)
 
-routes.post('/user', userController.create)
-routes.post('/tag', tagController.create)
+routes.post('/users', userController.create)
+routes.post('/tags', tagController.create)
 routes.post('/compliments', complimentsController.create)
 
 
