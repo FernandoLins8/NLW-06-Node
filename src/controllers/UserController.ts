@@ -4,7 +4,7 @@ import UserService from '../services/UserService'
 
 class UserController {
   async create(req: Request, res: Response) {
-    const { name, email, admin } = req.body
+    const { name, email, password, admin } = req.body
     const userService = new UserService()
 
     if(!email) {
@@ -14,6 +14,7 @@ class UserController {
     const user = await userService.createUser({
       name,
       email,
+      password,
       admin
     })
 
@@ -25,6 +26,18 @@ class UserController {
     const users = await userService.indexUsers()
     
     return res.json(users)
+  }
+
+  async authenticate(req: Request, res: Response) {
+    const { email, password } = req.body
+    const userService = new UserService()
+
+    const token = await userService.authenticateUser({
+      email,
+      password
+    })
+
+    return res.json(token)
   }
 }
 

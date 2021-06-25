@@ -17,5 +17,7 @@ routes.post('/users', userController.create)
 routes.post('/tags', tagController.create)
 routes.post('/compliments', complimentsController.create)
 
+routes.post('/login', userController.authenticate)
+
 
 export default routes
