@@ -5,6 +5,7 @@ import TagController from './controllers/TagController'
 import ComplimentsController from './controllers/ComplimentsController'
 
 import ensureAdmin from './middlewares/ensureAdmin'
+import ensureAuthenticated from './middlewares/ensureAuthenticated'
 
 const routes = express.Router()
 
@@ -16,8 +17,8 @@ routes.get('/users', userController.index)
 routes.get('/tags', tagController.index)
 
 routes.post('/users', userController.create)
-routes.post('/tags', ensureAdmin, tagController.create)
-routes.post('/compliments', complimentsController.create)
+routes.post('/tags', ensureAuthenticated, ensureAdmin, tagController.create)
+routes.post('/compliments', ensureAuthenticated, complimentsController.create)
 
 routes.post('/login', userController.authenticate)
 
