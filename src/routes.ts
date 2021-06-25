@@ -4,7 +4,7 @@ import UserController from './controllers/UserController'
 import TagController from './controllers/TagController'
 import ComplimentsController from './controllers/ComplimentsController'
 
-import ensureAdmin from '../middlewares/ensureAdmin'
+import ensureAdmin from './middlewares/ensureAdmin'
 
 const routes = express.Router()
 
