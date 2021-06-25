@@ -16,6 +16,10 @@ class ComplimentsService {
     const userRepository = getCustomRepository(UsersRepository)
     const tagsRepository = getCustomRepository(TagsRepository)
 
+    if(user_sender === user_receiver) {
+      throw new Error('User cannot send compliment to himself')
+    }
+    
     const userSender = await userRepository.findOne(user_sender)
     if(!userSender) {
       throw new Error('Sender not found')
@@ -25,7 +29,7 @@ class ComplimentsService {
     if(!userReceiver) {
       throw new Error('Receiver not found')
     }
-
+    
     const tag = await tagsRepository.findOne(tag_id)
     if(!tag) {
       throw new Error('Tag not found')
