@@ -15,6 +15,8 @@ const complimentsController = new ComplimentsController()
 
 routes.get('/users', userController.index)
 routes.get('/tags', tagController.index)
+routes.get('/compliments/received', ensureAuthenticated, complimentsController.listReceivedByUser)
+routes.get('/compliments/sent', ensureAuthenticated, complimentsController.listSentByUser)
 
 routes.post('/users', userController.create)
 routes.post('/tags', ensureAuthenticated, ensureAdmin, tagController.create)

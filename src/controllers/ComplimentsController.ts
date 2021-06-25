@@ -20,6 +20,26 @@ class ComplimentsController {
 
     return res.json(compliment)
   }
+
+  async listReceivedByUser(req: Request, res: Response) {
+    const { user_id } = req
+    
+    const complimentsService = new ComplimentsService()
+
+    const compliments = await complimentsService.listComplimentsReceivedByUser(user_id)
+
+    return res.json(compliments)
+  }
+
+  async listSentByUser(req: Request, res: Response) {
+    const { user_id } = req
+    
+    const complimentsService = new ComplimentsService()
+
+    const compliments = await complimentsService.listComplimentsSentByUser(user_id)
+
+    return res.json(compliments)
+  }
 }
 
 export default ComplimentsController
