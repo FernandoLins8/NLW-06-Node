@@ -17,7 +17,7 @@ interface IUserAuthenticateReq {
 }
 
 class UserService {
-  async createUser({ name, email, admin, password }: IUserRequest) {
+  async createUser({ name, email, admin = false, password }: IUserRequest) {
     const usersRepository = getCustomRepository(UsersRepository)
     const userAlreadyExists = await usersRepository.findOne({ email })
 
