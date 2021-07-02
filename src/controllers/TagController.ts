@@ -6,7 +6,7 @@ class TagController {
     const { name } = req.body
 
     if(!name) {
-      return res.json({ 'message': 'A tag must have a name' })
+      throw new Error('A tag must have a name')
     }
     
     const tagService = new TagService()

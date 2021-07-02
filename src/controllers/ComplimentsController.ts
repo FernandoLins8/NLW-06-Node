@@ -7,7 +7,7 @@ class ComplimentsController {
     const { user_id } = req
     
     if(!user_id || !user_receiver || !tag_id) {
-      return res.json({ 'message': 'A compliment must have a sender, receiver and tag' })
+      throw new Error('A compliment must have a receiver and a tag')
     }
     
     const complimentsService = new ComplimentsService()

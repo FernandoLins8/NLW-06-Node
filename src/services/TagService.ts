@@ -10,7 +10,7 @@ class TagService {
       throw new Error('This tag already exists')
     }
 
-    const tag = tagsRepository.create({ name }) 
+    const tag = tagsRepository.create({ name })
 
     tagsRepository.save(tag)
 

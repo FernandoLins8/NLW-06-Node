@@ -7,8 +7,8 @@ class UserController {
     const { name, email, password, admin } = req.body
     const userService = new UserService()
 
-    if(!email) {
-      return res.send({ 'message': 'Email is required' })
+    if(!name || !email || !password) {
+      throw Error('Name, password and email are required')
     }
     
     const user = await userService.createUser({
