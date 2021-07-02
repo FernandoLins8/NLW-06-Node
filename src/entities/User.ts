@@ -1,6 +1,6 @@
-import { Column, CreateDateColumn, Entity, OneToMany, PrimaryColumn, UpdateDateColumn } from "typeorm";
-
+import { Column, CreateDateColumn, Entity, PrimaryColumn, UpdateDateColumn } from "typeorm";
 import { v4 as uuid } from 'uuid'
+import { Exclude } from 'class-transformer'
 
 @Entity('user')
 class User {
@@ -13,6 +13,7 @@ class User {
   @Column()
   email: string
 
+  @Exclude()
   @Column()
   password: string
 

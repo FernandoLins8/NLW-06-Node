@@ -1,6 +1,7 @@
 import { getCustomRepository } from "typeorm"
 import { hash, compare } from 'bcryptjs'
 import { sign } from 'jsonwebtoken'
+import { classToPlain } from 'class-transformer'
 
 import UsersRepository from "../repositories/UserRepository"
 
@@ -36,14 +37,14 @@ class UserService {
 
     usersRepository.save(user)
     
-    return user
+    return classToPlain(user)
   }
 
   async indexUsers() {
     const userRepository = getCustomRepository(UsersRepository) 
     const users = await userRepository.find()
 
-    return users
+    return classToPlain(users)
   }
 
   async authenticateUser({ email, password } : IUserAuthenticateReq) {
